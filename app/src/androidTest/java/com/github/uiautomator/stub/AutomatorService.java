@@ -161,6 +161,14 @@ public interface AutomatorService {
     boolean injectInputEvent(int action, float x, float y, int metaState);
 
     /**
+     * Performs a multi-pointer gesture.
+     *
+     * @param touches each inner array represents the path of a single pointer.
+     * @return true if the gesture was performed successfully, false otherwise.
+     */
+    boolean performMultiPointerGesture(Point[][] touches);
+
+    /**
      * Helper method used for debugging to dump the current window's layout hierarchy.
      *
      * @param compressed use compressed layout hierarchy or not using setCompressedLayoutHeirarchy method. Ignore the parameter in case the API level lt 18.

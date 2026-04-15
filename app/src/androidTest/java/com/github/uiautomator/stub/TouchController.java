@@ -147,7 +147,7 @@ public class TouchController {
             pointerCoords[x] = touches[x][touches[x].length - 1];
 
         // touch up
-        for (int x = 1; x < touches.length; x++) {
+        for (int x = touches.length - 1; x >= 1; x--) {
             event = MotionEvent.obtain(downTime, SystemClock.uptimeMillis(),
                     getPointerAction(MotionEvent.ACTION_POINTER_UP, x), x + 1, properties,
                     pointerCoords, 0, 0, 1, 1, 0, 0, InputDevice.SOURCE_TOUCHSCREEN, 0);

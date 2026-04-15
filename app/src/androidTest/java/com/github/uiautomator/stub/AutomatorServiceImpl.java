@@ -278,6 +278,22 @@ public class AutomatorServiceImpl implements AutomatorService {
         }
     }
 
+    @Override
+    public boolean performMultiPointerGesture(Point[][] touches) {
+        MotionEvent.PointerCoords[][] pc = new MotionEvent.PointerCoords[touches.length][];
+        for (int i = 0; i < touches.length; i++) {
+            pc[i] = new MotionEvent.PointerCoords[touches[i].length];
+            for (int j = 0; j < touches[i].length; j++) {
+                pc[i][j] = new MotionEvent.PointerCoords();
+                pc[i][j].x = touches[i][j].getX();
+                pc[i][j].y = touches[i][j].getY();
+                pc[i][j].pressure = 1.0f;
+                pc[i][j].size = 1.0f;
+            }
+        }
+        return touchController.performMultiPointerGesture(pc);
+    }
+
     /**
      * Helper method used for debugging to dump the current window's layout hierarchy.
      *
